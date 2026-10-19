@@ -1,0 +1,135 @@
+/* =========================================================
+   Mayra Dental Clinic — elegance layer
+   Loaded after the base page styles. Pure additions.
+   ========================================================= */
+:root{
+  --mx-ink:#312A23; --mx-mauve:#908592; --mx-cream:#faf7f4; --mx-line:rgba(49,42,35,.12);
+  --mx-ease:cubic-bezier(.22,.8,.24,1);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;background:#fff}
+::selection{background:var(--mx-ink);color:#fff}
+a{transition:color .3s var(--mx-ease),opacity .3s var(--mx-ease)}
+
+/* refined scrollbar */
+html{scrollbar-width:thin;scrollbar-color:var(--mx-mauve) transparent}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--mx-mauve);border-radius:10px;border:2px solid #fff}
+
+/* ---------- scroll progress ---------- */
+.mx-progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:100001;pointer-events:none;
+  background:linear-gradient(90deg,var(--mx-mauve),var(--mx-ink));transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .12s linear}
+
+/* ---------- intro splash ---------- */
+.mx-splash{position:fixed;inset:0;z-index:100002;background:var(--mx-ink);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;transition:opacity .7s var(--mx-ease),visibility .7s;color:#fff}
+.mx-splash.mx-out{opacity:0;visibility:hidden}
+.mx-splash b{font:800 clamp(38px,8vw,72px)/1 Montserrat,Arial,Helvetica,sans-serif;letter-spacing:.28em;margin-right:-.28em;
+  opacity:0;transform:translateY(14px);animation:mxSplashIn .9s .1s var(--mx-ease) forwards}
+.mx-splash span{font:600 clamp(11px,2vw,15px)/1 Montserrat,Arial,Helvetica,sans-serif;letter-spacing:.55em;margin-right:-.55em;color:var(--mx-mauve);
+  opacity:0;animation:mxSplashIn .9s .35s var(--mx-ease) forwards}
+.mx-splash i{display:block;width:0;height:1px;background:var(--mx-mauve);animation:mxLine 1s .5s var(--mx-ease) forwards}
+@keyframes mxSplashIn{to{opacity:1;transform:none}}
+@keyframes mxLine{to{width:min(160px,30vw)}}
+
+/* ---------- scroll reveal (only when JS is running) ---------- */
+html.mx-js .mx-r{opacity:0;transform:translate3d(0,34px,0);
+  transition:opacity .95s var(--mx-ease),transform 1.05s var(--mx-ease);transition-delay:var(--mx-d,0ms);will-change:opacity,transform}
+html.mx-js .mx-r.mx-left{transform:translate3d(-42px,0,0)}
+html.mx-js .mx-r.mx-right{transform:translate3d(42px,0,0)}
+html.mx-js .mx-r.mx-zoom{transform:scale(.95)}
+html.mx-js .mx-r.mx-in{opacity:1;transform:none;will-change:auto}
+
+/* ---------- photographs ---------- */
+.mx-photo-wrap{overflow:hidden;border-radius:22px;box-shadow:0 24px 60px -28px rgba(49,42,35,.45);
+  transition:box-shadow .6s var(--mx-ease),transform .6s var(--mx-ease)}
+.mx-photo-wrap img{border-radius:0!important;display:block;width:100%;height:auto;
+  transform:translate3d(0,var(--mx-py,0px),0) scale(var(--mx-s,1.07));transition:transform 1.2s var(--mx-ease);will-change:transform}
+.mx-photo-wrap:hover{box-shadow:0 34px 70px -26px rgba(49,42,35,.55)}
+.mx-photo-wrap:hover img{--mx-s:1.12}
+
+/* ---------- header ---------- */
+.elementor-location-header .elementor-nav-menu a.elementor-item{
+  background-image:linear-gradient(currentColor,currentColor);background-repeat:no-repeat;background-position:0 calc(100% - 6px);
+  background-size:0% 1px;transition:background-size .45s var(--mx-ease),color .3s}
+.elementor-location-header .elementor-nav-menu a.elementor-item:hover,
+.elementor-location-header .elementor-nav-menu a.elementor-item.elementor-item-active{background-size:100% 1px}
+.elementor-location-header .elementor-nav-menu a.elementor-item{letter-spacing:.04em}
+.header-animado,.elementor-location-header>.e-parent{transition:background-color .5s,box-shadow .5s,backdrop-filter .5s}
+body.mx-scrolled .header-animado{box-shadow:0 10px 40px -18px rgba(49,42,35,.35);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px)}
+.elementor-location-header img,.elementor-location-footer img{transition:transform .5s var(--mx-ease),opacity .4s}
+.elementor-location-header a:hover>img,.elementor-location-footer a:hover>img{transform:scale(1.04)}
+
+/* ---------- buttons ---------- */
+.elementor-button{position:relative;overflow:hidden;isolation:isolate;
+  transition:transform .45s var(--mx-ease),box-shadow .45s var(--mx-ease),background-color .35s,color .35s,border-color .35s!important}
+.elementor-button::before{content:"";position:absolute;top:0;left:-130%;width:70%;height:100%;z-index:-1;pointer-events:none;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-18deg);transition:left .9s var(--mx-ease)}
+.elementor-button:hover{transform:translateY(-3px);box-shadow:0 16px 34px -14px rgba(49,42,35,.55)}
+.elementor-button:hover::before{left:140%}
+.elementor-button:active{transform:translateY(-1px)}
+.elementor-button-icon,.elementor-button-icon svg{transition:transform .4s var(--mx-ease)}
+.elementor-button:hover .elementor-button-icon{transform:translateX(4px)}
+
+/* ---------- headings & text ---------- */
+.elementor-widget-text-editor,.elementor-widget-container p{line-height:1.8}
+.elementor-widget-heading h2.elementor-heading-title,.elementor-widget-heading h1.elementor-heading-title{letter-spacing:.005em}
+.mx-rule{display:block;height:1px;width:0;margin:18px 0 6px;background:linear-gradient(90deg,var(--mx-mauve),transparent);transition:width 1.4s .25s var(--mx-ease)}
+.mx-rule.mx-in{width:90px}
+.mx-center .mx-rule{margin-left:auto;margin-right:auto;background:linear-gradient(90deg,transparent,var(--mx-mauve),transparent)}
+.elementor-widget-text-editor a,.elementor-widget-container p a{text-decoration-thickness:1px;text-underline-offset:4px;transition:text-decoration-color .3s,color .3s}
+.elementor-widget-text-editor a:hover{color:var(--mx-mauve)}
+
+/* ---------- cards: testimonials, icon boxes, lists ---------- */
+.elementor-widget-testimonial .elementor-widget-container,
+.elementor-widget-icon-box .elementor-widget-container,
+.elementor-widget-image-box .elementor-widget-container{transition:transform .6s var(--mx-ease),box-shadow .6s var(--mx-ease)}
+.elementor-widget-testimonial:hover .elementor-widget-container,
+.elementor-widget-icon-box:hover .elementor-widget-container,
+.elementor-widget-image-box:hover .elementor-widget-container{transform:translateY(-6px)}
+
+/* ---------- accordion (FAQ) ---------- */
+.e-n-accordion-item{transition:background-color .4s,box-shadow .5s var(--mx-ease),border-color .4s}
+.e-n-accordion-item:hover{box-shadow:0 14px 36px -22px rgba(49,42,35,.5)}
+.e-n-accordion-item>summary{transition:color .3s,padding .4s var(--mx-ease)}
+.e-n-accordion-item[open]>:not(summary){animation:mxFadeDown .6s var(--mx-ease) both}
+@keyframes mxFadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+
+/* ---------- footer ---------- */
+.elementor-location-footer a{transition:color .3s,transform .35s var(--mx-ease),opacity .3s}
+.elementor-location-footer .elementor-widget-text-editor a:hover{transform:translateX(4px);opacity:.85}
+.elementor-location-footer .elementor-social-icon{transition:transform .45s var(--mx-ease),background-color .3s,box-shadow .4s}
+.elementor-location-footer .elementor-social-icon:hover{transform:translateY(-5px) rotate(-6deg);box-shadow:0 12px 24px -10px rgba(0,0,0,.45)}
+.elementor-social-icon{transition:transform .45s var(--mx-ease)}
+.elementor-social-icon:hover{transform:translateY(-4px)}
+
+/* ---------- back to top ---------- */
+.mx-top{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
+  background:var(--mx-ink);color:#fff;display:grid;place-items:center;cursor:pointer;z-index:9990;
+  box-shadow:0 14px 30px -12px rgba(49,42,35,.7);opacity:0;visibility:hidden;transform:translateY(16px) scale(.9);
+  transition:opacity .45s var(--mx-ease),transform .45s var(--mx-ease),visibility .45s,background-color .3s}
+.mx-top.mx-show{opacity:1;visibility:visible;transform:none}
+.mx-top:hover{background:var(--mx-mauve);transform:translateY(-4px)}
+.mx-top svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- hero video / backgrounds: slow breathing ---------- */
+.elementor-background-video-container video,.elementor-background-video-hosted{animation:mxBreathe 24s ease-in-out infinite alternate}
+@keyframes mxBreathe{from{transform:scale(1)}to{transform:scale(1.06)}}
+
+@media (max-width:767px){
+  html.mx-js .mx-r{transform:translate3d(0,22px,0)}
+  html.mx-js .mx-r.mx-left,html.mx-js .mx-r.mx-right{transform:translate3d(0,22px,0)}
+  .mx-photo-wrap{border-radius:16px}
+  .mx-photo-wrap img{transform:scale(1.02)!important}
+  .mx-top{right:14px;bottom:14px;width:44px;height:44px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  html.mx-js .mx-r{opacity:1!important;transform:none!important;transition:none!important}
+  .mx-splash{display:none!important}
+  .mx-photo-wrap img{transform:none!important;transition:none!important}
+  .elementor-background-video-container video,.elementor-background-video-hosted{animation:none!important}
+  .elementor-button::before{display:none}
+}
